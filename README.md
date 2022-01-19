@@ -1,3 +1,6 @@
+# Tinder Cloned Version!!!
+
+This repository containing clone version of Tinder for Education purpose only!
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
