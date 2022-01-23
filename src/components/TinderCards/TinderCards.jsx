@@ -1,18 +1,23 @@
 import React, { useEffect, useState } from "react"
 import "../../assets/css/TinderCards.css"
+import "../../assets/css/Animation.css"
 import TinderCards from "react-tinder-card"
 import * as ADAPTERS from "../../utils/adapters"
 
-function TtinderCards() {
-  const [people, setPeople] = useState([])
+function TinderCardsView() {
+  const [isCardLoaded, setIsCardLoaded]   = useState(false)
+  const [people, setPeople]               = useState([])
 
   useEffect(() => {
     var promise = ADAPTERS.fetchData()
+    console.log(isCardLoaded)
 
     promise.then((res) => {
       setPeople(res.data)
+      setIsCardLoaded(true)
     }, (errReason) => {
       console.log(errReason)
+      setIsCardLoaded(true)
     })
   }, [])
 
@@ -28,6 +33,12 @@ function TtinderCards() {
   return (
     <div className="tinderCards">
       <div className="tinderCards__cardContainer">
+      { !isCardLoaded ? (
+        <div class="dot-pulse" />
+      ) : (
+        <div/>
+      )}
+
       {people.map((person) => (
         <TinderCards
           className="swipe"
@@ -49,4 +60,4 @@ function TtinderCards() {
   )
 }
 
-export default TtinderCards
+export default TinderCardsView
