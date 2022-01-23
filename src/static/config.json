@@ -1,7 +1,7 @@
 {
   "connection": {
-    "protocol"    : "http://",
-    "address"     : "localhost",
-    "port"        : ":8001"
+    "protocol"    : "https://",
+    "address"     : "tinder-backend-clone-24.herokuapp.com",
+    "port"        : ""
   }
 }
