@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react"
-import "../../assets/css/TinderCards.css"
-import "../../assets/css/Animation.css"
 import TinderCards from "react-tinder-card"
 import * as ADAPTERS from "../../utils/adapters"
 

@@ -1,6 +1,7 @@
-import './App.css';
+import './assets/scss/styles.scss'
+
 import Header from './components/Header/Header'
-import TinderCardsView from './components/TinderCards/TinderCards';
+import TinderCardsView from './components/TinderCards/TinderCards'
 import SwipeButtons from './components/SwipeButtons/SwipeButtons'
 
 function App() {

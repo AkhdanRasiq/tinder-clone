@@ -1,5 +1,4 @@
 import React from "react"
-import '../../assets/css/Header.css'
 import { Person } from "@mui/icons-material"
 import { IconButton } from "@mui/material"
 import { Forum } from "@mui/icons-material"
