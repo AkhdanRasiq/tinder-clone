@@ -1,73 +1,68 @@
 # Tinder Cloned Version!!!
 
 This repository containing clone version of Tinder for Education purpose only!
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br />
+<br />
 
-## Available Scripts
+# TECH STACK
 
-In the project directory, you can run:
+![MERN](https://www.askgalore.com/wp-content/uploads/2021/11/mern_hero.png)
 
-### `npm start`
+## Main Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. **M**ongoDB (Storage)
+2. **E**xpressJS (BackEnd)
+3. **R**eactJS (FrontEnd)
+4. **N**odeJS (Runtime Environment)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br />
+<br />
 
-### `npm test`
+![FIREBASE & HEROKU](https://miro.medium.com/max/864/1*PZPxNnfckMrE3HOSJojOWQ.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Deploy Platform
 
-### `npm run build`
+1. Firebase (FrontEnd)  : [Access Link](https://tinder-clone-e5556.web.app/)
+2. Heroku   (BackEnd)   : [Access Link](https://tinder-backend-clone-24.herokuapp.com/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br />
+<br />
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![JWT](https://abevoelker.com/assets/simple-transactional-email-links-using-json-web-tokens-jwt/jwt-wide-a712569b06ab520f7e87e85273120bb997461754a924ebb030c6902942fecd34.jpg)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Security
 
-### `npm run eject`
+1. JWT
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<br />
+<br />
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# QUICK ACCESS
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+FRONTEND : [Access Link](https://tinder-clone-e5556.web.app/)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+BACKEND  : [Access Link](https://tinder-backend-clone-24.herokuapp.com/)
 
-## Learn More
+# Repository List
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+1. AkhdanRasiq/tinder-clone (Frontend) : [Link](https://github.com/AkhdanRasiq/tinder-clone)
+2. AkhdanRasiq/tinder-clone-backend (Backend) : [Link](https://github.com/AkhdanRasiq/tinder-clone-backend)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Getting Started
 
-### Code Splitting
+## Install & Running
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Run this command to install all necessary  package listed in `package.json` :
 
-### Analyzing the Bundle Size
+> npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Then Run this command to start the app :
 
-### Making a Progressive Web App
+> npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Deployment
 
-### Advanced Configuration
+Run this below command to build the app :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+> npm run build
