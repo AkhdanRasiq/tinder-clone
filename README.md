@@ -11,7 +11,7 @@ This repository containing clone version of Tinder for Education purpose only!
 
 ## Main Stack
 
-1. **M**ongoDB (Storage)
+1. **M**ongoDB (Database)
 2. **E**xpressJS (BackEnd)
 3. **R**eactJS (FrontEnd)
 4. **N**odeJS (Runtime Environment)
@@ -23,8 +23,8 @@ This repository containing clone version of Tinder for Education purpose only!
 
 ## Deploy Platform
 
-1. Firebase (FrontEnd)  : [Access Link](https://tinder-clone-e5556.web.app/)
-2. Heroku   (BackEnd)   : [Access Link](https://tinder-backend-clone-24.herokuapp.com/)
+1. Firebase (FrontEnd)
+2. Heroku   (BackEnd)
 
 <br />
 <br />
