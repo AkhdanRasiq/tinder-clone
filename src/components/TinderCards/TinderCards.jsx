@@ -16,8 +16,6 @@ function TtinderCards() {
     })
   }, [])
 
-  console.log(people)
-
   const swiped = (direction, nameToDelete) => {
     console.log("Removing: " + nameToDelete)
     // setLastDirection(direction)
