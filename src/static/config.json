@@ -1,0 +1,7 @@
+{
+  "connection": {
+    "protocol"    : "http://",
+    "address"     : "localhost",
+    "port"        : ":8001"
+  }
+}

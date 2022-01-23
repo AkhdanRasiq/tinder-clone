@@ -1,18 +1,22 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import "../../assets/css/TinderCards.css"
 import TinderCards from "react-tinder-card"
+import * as ADAPTERS from "../../utils/adapters"
 
 function TtinderCards() {
-  const [people, setPeople] = useState([
-    {
-      name: 'Elon Musk',
-      url: 'https://cdn.popbela.com/content-images/post/20210111/elon-musk-usnews-b593d7d5c5a8d929e1076a2386508a17_750x500.jpg'
-    },
-    {
-      name: 'Jeff Bezos',
-      url: 'https://koinworks.com/wp-content/uploads/2018/01/orang-terkaya-di-dunia-jeff-bezos.jpg'
-    }
-  ])
+  const [people, setPeople] = useState([])
+
+  useEffect(() => {
+    var promise = ADAPTERS.fetchData()
+
+    promise.then((res) => {
+      setPeople(res.data)
+    }, (errReason) => {
+      console.log(errReason)
+    })
+  }, [])
+
+  console.log(people)
 
   const swiped = (direction, nameToDelete) => {
     console.log("Removing: " + nameToDelete)
@@ -35,7 +39,7 @@ function TtinderCards() {
           onCardLeftScreen={(dir) => outOfFrame(person.name)}
         >
           <div
-            style={{backgroundImage: "url(" + person.url + ")"}}
+            style={{backgroundImage: "url(" + person.imgUrl + ")"}}
             className="card"
           >
             <h3>{person.name}</h3>
