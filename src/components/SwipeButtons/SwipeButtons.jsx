@@ -1,5 +1,4 @@
 import React from 'react'
-import '../../assets/css/SwipeButtons.css'
 import { Replay, Close, StarRate, Favorite, FlashOn } from '@mui/icons-material'
 import { IconButton } from '@mui/material'
 
