@@ -10,7 +10,6 @@ function TinderCardsView() {
 
   useEffect(() => {
     var promise = ADAPTERS.fetchData()
-    console.log(isCardLoaded)
 
     promise.then((res) => {
       setPeople(res.data)
@@ -23,7 +22,6 @@ function TinderCardsView() {
 
   const swiped = (direction, nameToDelete) => {
     console.log("Removing: " + nameToDelete)
-    // setLastDirection(direction)
   }
 
   const outOfFrame = (name) => {
@@ -34,7 +32,7 @@ function TinderCardsView() {
     <div className="tinderCards">
       <div className="tinderCards__cardContainer">
       { !isCardLoaded ? (
-        <div class="dot-pulse" />
+        <div className="dot-pulse" />
       ) : (
         <div/>
       )}
