@@ -5,18 +5,12 @@ import { Forum } from "@mui/icons-material"
 
 import Sidebar from "../Sidebar/Sidebar"
 
-// let bIsActive = false
-
-// const onPersonSidebarAction = (a_bIsActive) => {
-//   if (a_bIsActive)
-//     bIsActive = !bIsActive
-// }
-
 class Header extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      bIsActive: false
+      bPersonIsActive: false,
+      bMessageIsActive: false
     }
   }
 
@@ -29,17 +23,24 @@ class Header extends React.Component {
   }
 
   handleEventSidebarCover = (event) => {
-    this.setState({ bIsActive: event.bIsActive })
+    this.setState({ bPersonIsActive: event.detail.bPersonIsActive, bMessageIsActive: event.detail.bMessageIsActive })
   }
 
   handlePersonSidebar = (event) => {
-    this.setState({ bIsActive: !this.state.bIsActive })
+    this.setState({ bPersonIsActive: !this.state.bPersonIsActive })
+  }
+
+  handleMessageSidebar = (event) => {
+    this.setState({ bMessageIsActive: !this.state.bMessageIsActive })
   }
 
   render() {
     return (
       <div className="header">
-        <Sidebar a_bIsActive={this.state.bIsActive} />
+        <Sidebar
+          a_bPersonIsActive={this.state.bPersonIsActive}
+          a_bMessageIsActive={this.state.bMessageIsActive}  
+        />
 
         <div className="headerContainer">
           <IconButton onClick={this.handlePersonSidebar}>
@@ -52,7 +53,7 @@ class Header extends React.Component {
             alt=""
           />
 
-          <IconButton>
+          <IconButton onClick={this.handleMessageSidebar}>
             <Forum fontSize="large" className="headerIcon" />
           </IconButton>
         </div>

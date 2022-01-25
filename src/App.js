@@ -7,6 +7,7 @@ import SwipeButtons from './components/SwipeButtons/SwipeButtons'
 function App() {
   return (
     <div className="app">
+      <meta meta name="viewport" content="width=device-width, user-scalable=no" />
       <Header />
       <TinderCardsView />
       <SwipeButtons />
