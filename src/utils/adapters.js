@@ -27,6 +27,7 @@ export function connectWebsocket() {
 
   wsSocket.onmessage = function (event) {
     const message = JSON.parse(event.data)
+    eventDispatcher('authorOnline', { detail: { isOnline: true }})
     
     if (!message.userOnline)
       gotoBottom()
