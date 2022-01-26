@@ -21,7 +21,7 @@ class Sidebar extends React.Component {
 
     this.state = {
       bPersonIsActive: false,
-      bMessageIsActive: true
+      bMessageIsActive: false
     }
   }
 
