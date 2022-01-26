@@ -1,9 +1,10 @@
 import axios from 'axios'
-import { strHost, saveToLocalStorage, handleFilterMessage } from './util'
+import { strHost, saveToLocalStorage, loadFromLocalStorage, handleFilterMessage, strWebsocketHost, gotoBottom, eventDispatcher } from './util'
 
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
-const wsSocket = new W3CWebSocket('ws://tinder-backend-clone-24.herokuapp.com');
+let wsSocket    = new W3CWebSocket(strWebsocketHost())
+let wsHeartbeat  = {}
 
 const axiosInstance = axios.create({
   baseURL: strHost()
@@ -12,7 +13,7 @@ const axiosInstance = axios.create({
 export async function fetchData() {
   const res = await axiosInstance.get("/tinder/cards")
   if (!res)
-    return Promise.reject("No Result!")
+    return Promise.reject("Something went wrong!")
   return Promise.resolve(res)
 
 }
@@ -20,12 +21,16 @@ export async function fetchData() {
 export function connectWebsocket() {
   wsSocket.onopen = function (event) {
     console.log('WebSocket Client Connected');
+    heartbeat()
+    eventDispatcher('authorOnline', { detail: { isOnline: true }})
   }
 
   wsSocket.onmessage = function (event) {
-    console.log(event.data)
     const message = JSON.parse(event.data)
     
+    if (!message.userOnline)
+      gotoBottom()
+
     if (message.userID)
       saveToLocalStorage('userID', message.userID)
     
@@ -34,6 +39,7 @@ export function connectWebsocket() {
 
   wsSocket.onclose = function (event) {
     console.log(event)
+    eventDispatcher('authorOnline', { detail: { isOnline: false }})
   }
 
   wsSocket.onerror = function (err) {
@@ -48,4 +54,15 @@ export function onSendWebsocket(data) {
   } catch (err) {
     console.error(`[ERROR] ${err.message}`)
   }
+}
+
+export function wsRefreshConnection() {
+  clearTimeout(wsHeartbeat)
+  wsSocket = new W3CWebSocket(strWebsocketHost())
+  connectWebsocket()
+}
+
+function heartbeat() {
+  wsSocket.send(JSON.stringify({ userOnline: loadFromLocalStorage('userID') }))
+  wsHeartbeat = setTimeout(heartbeat, 1000)
 }

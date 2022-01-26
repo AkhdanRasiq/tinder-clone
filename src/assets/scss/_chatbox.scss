@@ -1,0 +1,46 @@
+.alignRight {
+    text-align: -webkit-right;
+}
+
+.chatboxContainer {
+    width: 100%;
+}
+
+.cardSelf {
+    background-color: lightgreen;
+}
+
+.cardOther {
+    background-color: lightgrey;
+}
+
+.chatboxCard {
+    margin: 10px;
+    padding: 10px;
+    width: fit-content;
+    max-width: 75%;
+    min-width: 10px;
+    height: fit-content;
+    min-height: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 53px 0px rgba(0, 0, 0, 0.3);
+}
+
+.chatbox_user {
+    text-align: left !important;
+    font-size: 12px;
+    margin-bottom: 5px;
+    font-family: 'Open Sans';
+}
+
+.chatbox_text {
+    text-align: left !important;
+    font-family: 'Open Sans';
+}
+
+.chatbox_time {
+    text-align: right !important;
+    font-size: 13.5px;
+    color: #575757;
+    font-family: 'Open Sans';
+}

@@ -4,7 +4,11 @@ import Profile from '../Profile/Profile'
 import Message from '../Message/Message'
 
 import { IconButton } from "@mui/material";
+import Tooltip from '@mui/material/Tooltip';
 import CloseIcon from '@mui/icons-material/Close';
+import RefreshIcon from '@mui/icons-material/Refresh';
+
+import { wsRefreshConnection } from '../../utils/adapters'
 
 function getWindowDimensions() {
   const { innerWidth: width } = window;
@@ -33,6 +37,10 @@ class Sidebar extends React.Component {
     this.setState({ bPersonIsActive: false, bMessageIsActive: false })
     const eventDispatch = new CustomEvent('sidebarCover', { detail: { bPersonIsActive: false, bMessageIsActive: false }});
     window.dispatchEvent(eventDispatch)
+  }
+
+  handleRefreshWsConnection = () => {
+    wsRefreshConnection()
   }
 
   render() {
@@ -95,35 +103,14 @@ class Sidebar extends React.Component {
             <IconButton onClick={this.handleSidebarCoverHide}>
               <CloseIcon fontSize="large" className="headerIcon" />
             </IconButton>
+            <Tooltip title='Refresh Websocket'>
+              <IconButton onClick={this.handleRefreshWsConnection}>
+                <RefreshIcon fontSize="large" className="headerIcon" />
+              </IconButton>
+            </Tooltip>
           </div>
           <Message />
         </div>
-
-        {/* <div className='sidebarCover'
-          style={styleSidebarCoverShow}
-        />
-        <div className='sidebarCard' style={styleProfileSidebarShow}>
-          <Avatar className='sidebarProfileAvatar' alt="Remy Sharp" src="https://media-exp1.licdn.com/dms/image/C5103AQHB1GRZq-arKg/profile-displayphoto-shrink_400_400/0/1535513202972?e=1648684800&v=beta&t=NFXC30MwzF0Y3zJUgVJk7d3FMAmAHKCdbnESGrOmpYE" />
-          <p className='sidebarProfileName'>AKHDAN RASIQ GUMELAR</p>
-          <p className='sidebarProfileAbout'>Experienced Software Engineer with a demonstrated history of working in the computer software industry. Skilled in Mobile Application Development, ReactJS, Python, and JavaScript. Strong engineering professional graduated from SMK Telkom Jakarta.</p>
-          <div className='sidebarProfilePersonalInfoContainer'>
-            <LocationOnIcon fontSize='large'/>
-            <p className='sidebarProfilePersonalInfoText'>Indonesia, Jakarta</p>
-          </div>
-          <div className='sidebarProfilePersonalInfoContainer'>
-            <EmailIcon fontSize='large'/>
-            <p className='sidebarProfilePersonalInfoText'>indan.gumelar20@gmail.com</p>
-          </div>
-          <div className='sidebarProfilePersonalInfoContainer'>
-            <GitHubIcon fontSize='large'/>
-            <p className='sidebarProfilePersonalInfoText'>github.com/AkhdanRasiq</p>
-          </div>
-          <div className='sidebarProfilePersonalInfoContainer'>
-            <LinkedInIcon fontSize='large'/>
-            <p className='sidebarProfilePersonalInfoText'>linkedin.com/in/AkhdanRasiq</p>
-          </div>
-        </div> */}
-
       </div>
     )
   }

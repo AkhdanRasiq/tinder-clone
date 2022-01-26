@@ -5,9 +5,10 @@
 }
 
 .sidebarMessageCloseContainer {
+    display: flex;
     position: fixed;
     z-index: 1002;
-    text-align: left;
+    justify-content: space-between;
     width: 30vw;
     @media (min-width: $phone-s) and (max-width: $table-plus) {
         width: 100vw;

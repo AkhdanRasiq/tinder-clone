@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { Avatar } from '@mui/material'
-import { styled } from '@mui/material/styles';
-import Badge from '@mui/material/Badge';
+import { styled } from '@mui/material/styles'
+import Badge from '@mui/material/Badge'
 
-const StyledBadge = styled(Badge)(({ theme }) => ({
+const StyledBadgeOnline = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     backgroundColor: '#44b700',
     color: '#44b700',
@@ -38,17 +38,59 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
+const StyledBadgeOffline = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    backgroundColor: '#b70000',
+    color: '#b70000',
+    width: '10px',
+    height: '10px',
+    borderRadius: '100%',
+    right: 10,
+    bottom: 15,
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`
+  }
+}));
+
 class MessageHeader extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      isOnline: false
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener("authorOnline", this.handleEventStatus);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("authorOnline", this.handleEventStatus);
+  }
+
+  handleEventStatus = (event) => {
+    this.setState({ isOnline: event.detail.isOnline })
+  }
+
   render() {
     return (
       <div className='messageHeaderContainer'>
-        <StyledBadge
-        overlap="circular"
-        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-        variant="dot"
-      >
-        <Avatar className='messageHeaderAvatar' alt="Avatar Image" src="https://media-exp1.licdn.com/dms/image/C5103AQHB1GRZq-arKg/profile-displayphoto-shrink_400_400/0/1535513202972?e=1648684800&v=beta&t=NFXC30MwzF0Y3zJUgVJk7d3FMAmAHKCdbnESGrOmpYE" />
-      </StyledBadge>
+        {this.state.isOnline ?
+          <StyledBadgeOnline
+            overlap="circular"
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+            variant="dot"
+          >
+            <Avatar className='messageHeaderAvatar' alt="Avatar Image" src="https://www.logo.wine/a/logo/Tinder_(app)/Tinder_(app)-Flame-Logo.wine.svg" />
+          </StyledBadgeOnline>
+        :
+          <StyledBadgeOffline
+            overlap="circular"
+            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+            variant="dot"
+          >
+            <Avatar className='messageHeaderAvatar' alt="Avatar Image" src="https://www.logo.wine/a/logo/Tinder_(app)/Tinder_(app)-Flame-Logo.wine.svg" />
+          </StyledBadgeOffline>
+        }
       </div>
     )
   }

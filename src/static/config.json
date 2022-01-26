@@ -3,5 +3,9 @@
     "protocol"    : "https://",
     "address"     : "tinder-backend-clone-24.herokuapp.com",
     "port"        : ""
+  },
+  "websocket": {
+    "protocol"    : "wss://",
+    "address"     : "tinder-backend-clone-24.herokuapp.com"
   }
 }

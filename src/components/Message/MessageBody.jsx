@@ -1,4 +1,5 @@
 import React from 'react'
+import Chatbox from './Chatbox'
 
 class MessageBody extends React.Component {
   constructor(props) {
@@ -15,9 +16,12 @@ class MessageBody extends React.Component {
 
   render() {
     return (
-      <div className='messageBodyContainer'>
+      <div className='messageBodyContainer' id='messageBodyContainer'>
         {this.state.arrMessages.map((msg) => (
-          <p key={msg.timestamp}>{msg.text}</p>
+          <Chatbox 
+            key={msg.timestamp}
+            a_messages={msg}
+          />
         ))}
       </div>
     )

@@ -22,6 +22,9 @@ class MessageBottom extends React.Component {
 
   handleSendMessage = (event) => {
     if (event.key === 'Enter' || event.target.id === 'btnSend') {
+      const element = document.getElementById('messageBottom_textfield');
+      element.focus()
+
       const generatedMessage = handleGenerateMessage(this.state.strMessage)
       onSendWebsocket(generatedMessage);
 
@@ -43,6 +46,7 @@ class MessageBottom extends React.Component {
         <TextField
           fullWidth
           className   ='messageBottom_textfield'
+          id          ='messageBottom_textfield'
           placeholder ='Type a message'
           onKeyDown   ={this.handleSendMessage} 
           onChange    ={this.handleTyping}
