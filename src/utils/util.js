@@ -7,6 +7,10 @@ export function strHost() {
   return CONFIG.connection.protocol + CONFIG.connection.address
 }
 
+export function strWebsocketHost() {
+  return CONFIG.websocket.protocol + CONFIG.websocket.address
+}
+
 export function handleGenerateMessage(msg) {
   let content = {
     text        : msg,
@@ -29,7 +33,16 @@ export function handleFilterMessage(data) {
     return
   
   else if (data.user) {
-    const eventDispatch = new CustomEvent('newMessage', { detail: data });
-    window.dispatchEvent(eventDispatch)
+    eventDispatcher('newMessage', { detail: data })
   }
+}
+
+export function gotoBottom() {
+  var element = document.getElementById('messageBodyContainer');
+  element.scrollTop = element.scrollHeight - element.clientHeight;
+}
+
+export function eventDispatcher(strEventName, data) {
+  const eventDispatch = new CustomEvent(strEventName, data);
+  window.dispatchEvent(eventDispatch)
 }

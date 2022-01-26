@@ -3,6 +3,11 @@
     src: url(../font/CooperHewitt-Light.otf)  format('truetype');
 }
 
+@font-face {
+    font-family: 'Open Sans';
+    src: url(../font/OpenSans-Regular.ttf)  format('truetype');
+}
+
 @mixin sidebar-position($margin-left) {
     margin-left: $margin-left;
 }
