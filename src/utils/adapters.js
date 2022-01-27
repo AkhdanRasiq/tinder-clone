@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { strHost, saveToLocalStorage, loadFromLocalStorage, handleFilterMessage, strWebsocketHost, gotoBottom, eventDispatcher } from './util'
+import { strHost, saveToLocalStorage, loadFromLocalStorage, handleFilterMessage, strWebsocketHost, eventDispatcher } from './util'
 
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
@@ -28,9 +28,6 @@ export function connectWebsocket() {
   wsSocket.onmessage = function (event) {
     const message = JSON.parse(event.data)
     eventDispatcher('authorOnline', { detail: { isOnline: true }})
-    
-    if (!message.userOnline)
-      gotoBottom()
 
     if (message.userID)
       saveToLocalStorage('userID', message.userID)
@@ -41,6 +38,7 @@ export function connectWebsocket() {
   wsSocket.onclose = function (event) {
     console.log(event)
     eventDispatcher('authorOnline', { detail: { isOnline: false }})
+    wsRefreshConnection()
   }
 
   wsSocket.onerror = function (err) {
