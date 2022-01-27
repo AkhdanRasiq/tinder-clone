@@ -30,20 +30,25 @@
 .messageBodyContainer {
     overflow-y: scroll;
     width: 100%;
-    height: calc(100vh - 80px - 80px);
+    height: calc(var(--vh, 1vh) * 100 - 80px - 80px);
     background-color: white;
-    // &::-webkit-scrollbar {
-    //     display: none;
-    // }
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 .messageBottomContainer {
-    width: 100%;
+    position: fixed;
+    bottom: 0;
+    width: 30vw;
     height: 80px;
     display: flex;
     align-items: center;
     background-color: white;
     box-shadow: 0px 5px 20px 0px rgba(0, 0, 0, 0.3) !important;
+    @media (min-width: $phone-s) and (max-width: $table-plus) {
+        width: 100vw;
+    }
 }
 
 .messageBottom_textfield {
@@ -51,9 +56,5 @@
 }
 
 .messageBottom_btnSend {
-    margin-right: 10px;
     color: #a1a1a1;
-    &:hover {
-        cursor: pointer;
-    }
 }

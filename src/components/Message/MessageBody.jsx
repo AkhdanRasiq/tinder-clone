@@ -1,6 +1,8 @@
 import React from 'react'
 import Chatbox from './Chatbox'
 
+import { goToBottom } from '../../utils/util'
+
 class MessageBody extends React.Component {
   constructor(props) {
     super(props)
@@ -9,9 +11,24 @@ class MessageBody extends React.Component {
     }
   }
 
+  componentDidMount = () => {
+    window.addEventListener('resize', this.handleResize)
+  }
+
+  componentWillUnmount = () => {
+      window.removeEventListener('resize', this.handleResize)
+  }
+
   componentDidUpdate = (prevProps) => {
     if(this.props.a_arrMessages !== prevProps.a_arrMessages)
       this.setState({ arrMessages: this.props.a_arrMessages })
+    goToBottom()
+  }
+
+  handleResize = (event) => {
+    let vh = window.innerHeight * 0.01
+    document.documentElement.style.setProperty('--vh', `${vh}px`)
+    goToBottom()
   }
 
   render() {

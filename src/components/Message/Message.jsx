@@ -24,8 +24,6 @@ class Message extends Component {
 
   handleEventNewMessage = (event) => {
     this.setState({ arrMessages: [...this.state.arrMessages, event.detail] })
-    console.log([...this.state.arrMessages, event.detail])
-    console.log(this.state.arrMessages)
   }
 
   handleMessagesUpdate = (event) => {

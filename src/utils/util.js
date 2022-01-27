@@ -37,7 +37,7 @@ export function handleFilterMessage(data) {
   }
 }
 
-export function gotoBottom() {
+export function goToBottom() {
   var element = document.getElementById('messageBodyContainer');
   element.scrollTop = element.scrollHeight - element.clientHeight;
 }

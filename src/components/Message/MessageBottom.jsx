@@ -2,6 +2,7 @@ import React from 'react'
 
 import TextField from '@mui/material/TextField';
 import SendIcon from '@mui/icons-material/Send';
+import { IconButton } from "@mui/material"
 
 import { onSendWebsocket } from '../../utils/adapters'
 import { handleGenerateMessage } from '../../utils/util'
@@ -20,19 +21,25 @@ class MessageBottom extends React.Component {
       this.setState({ arrMessages: this.props.a_arrMessages })
   }
 
+  handleMessageToSend = () => {
+    const generatedMessage = handleGenerateMessage(this.state.strMessage)
+    onSendWebsocket(generatedMessage);
+
+    this.setState({ arrMessages: [...this.state.arrMessages, generatedMessage]})
+    this.props.a_messageOnUpdateCallback([...this.state.arrMessages, generatedMessage])
+
+    this.setState({ strMessage: "" })
+  }
+
   handleSendMessage = (event) => {
-    if (event.key === 'Enter' || event.target.id === 'btnSend') {
-      const element = document.getElementById('messageBottom_textfield');
-      element.focus()
+    if (event.key === 'Enter' && this.state.strMessage !== '')
+      this.handleMessageToSend()
+  }
 
-      const generatedMessage = handleGenerateMessage(this.state.strMessage)
-      onSendWebsocket(generatedMessage);
-
-      this.setState({ arrMessages: [...this.state.arrMessages, generatedMessage]})
-      this.props.a_messageOnUpdateCallback([...this.state.arrMessages, generatedMessage])
-
-      this.setState({ strMessage: "" })
-    }
+  handleBtnSendMessage = (event) => {
+    event.preventDefault()
+    if (this.state.strMessage !== '')
+      this.handleMessageToSend()
   }
 
   handleTyping = (event) => {
@@ -41,24 +48,24 @@ class MessageBottom extends React.Component {
 
   render() {
     return (
-      <div className  ='messageBottomContainer'>
+      <div className    ='messageBottomContainer'>
 
         <TextField
           fullWidth
-          className   ='messageBottom_textfield'
-          id          ='messageBottom_textfield'
-          placeholder ='Type a message'
-          onKeyDown   ={this.handleSendMessage} 
-          onChange    ={this.handleTyping}
-          value       ={this.state.strMessage}  
+          className     ='messageBottom_textfield'
+          placeholder   ='Type a message'
+          autoComplete  ='off'
+          onKeyDown     ={this.handleSendMessage} 
+          onChange      ={this.handleTyping}
+          value         ={this.state.strMessage}  
         />
 
-        <SendIcon
-          id          ='btnSend'
-          className   ='messageBottom_btnSend'
-          fontSize    ='large'
-          onClick     ={this.handleSendMessage}
-        />
+        <IconButton onClick={this.handleBtnSendMessage}>
+          <SendIcon
+            className   ='messageBottom_btnSend'
+            fontSize    ='large'
+          />
+        </IconButton>
       </div>
     )
   }
