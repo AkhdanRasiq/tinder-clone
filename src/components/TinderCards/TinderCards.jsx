@@ -1,56 +1,105 @@
-import React, { useEffect, useState } from "react"
-import TinderCards from "react-tinder-card"
+import React, { useEffect, useState, useMemo, useRef } from 'react'
+import TinderCard from 'react-tinder-card'
 import * as ADAPTERS from "../../utils/adapters"
 
-function TinderCardsView() {
+import { Replay, Close, Favorite } from '@mui/icons-material'
+import { IconButton } from '@mui/material'
+
+function TinderCardsView () {
   const [isCardLoaded, setIsCardLoaded]   = useState(false)
   const [people, setPeople]               = useState([])
+  const [currentIndex, setCurrentIndex]   = useState(0)
+
+  const currentIndexRef = useRef(currentIndex)
 
   useEffect(() => {
-    var promise = ADAPTERS.fetchData()
+    const promise = ADAPTERS.fetchData()
 
     promise.then((res) => {
       setPeople(res.data)
       setIsCardLoaded(true)
+      setCurrentIndex(res.data.length - 1)
     }, (errReason) => {
       console.log(errReason)
       setIsCardLoaded(true)
     })
   }, [])
 
-  const swiped = (direction, nameToDelete) => {
-    console.log("Removing: " + nameToDelete)
+  const childRefs = useMemo(
+    () =>
+      Array(people.length)
+        .fill(0)
+        .map((i) => React.createRef()),
+    [people]
+  )
+
+  const updateCurrentIndex = (val) => {
+    setCurrentIndex(val)
+    currentIndexRef.current = val
   }
 
-  const outOfFrame = (name) => {
-    console.log(name + " left the screen!")
+  const canGoBack = currentIndex < people.length - 1
+  const canSwipe = currentIndex >= 0
+
+  const swiped = (direction, nameToDelete, index) => {
+    updateCurrentIndex(index - 1)
+  }
+
+  const outOfFrame = (name, idx) => {
+    console.log(`${name} (${idx}) left the screen!`)
+    currentIndexRef.current >= idx && childRefs[idx].current.restoreCard()
+  }
+
+  const swipe = async (dir) => {
+    if (canSwipe && currentIndex < people.length) {
+      await childRefs[currentIndex].current.swipe(dir)
+    }
+  }
+
+  const goBack = async () => {
+    if (!canGoBack) return
+    const newIndex = currentIndex + 1
+    updateCurrentIndex(newIndex)
+    await childRefs[newIndex].current.restoreCard()
   }
 
   return (
     <div className="tinderCards">
-      <div className="tinderCards__cardContainer">
-      { !isCardLoaded ? (
-        <div className="dot-pulse" />
-      ) : (
-        <div/>
-      )}
+      <div className='tinderCards__cardContainer'>
+        { !isCardLoaded ? (
+          <div className="dot-pulse" />
+        ) : (
+          <div/>
+        )}
 
-      {people.map((person) => (
-        <TinderCards
-          className="swipe"
-          key={person.name}
-          preventSwipe={["up", "down"]}
-          onSwipe={(dir) => swiped(dir, person.name)}
-          onCardLeftScreen={(dir) => outOfFrame(person.name)}
-        >
-          <div
-            style={{backgroundImage: "url(" + person.imgUrl + ")"}}
-            className="card"
+        {people.map((character, index) => (
+          <TinderCard
+            ref={childRefs[index]}
+            className='swipe'
+            key={character.name}
+            preventSwipe={["up", "down"]}
+            onSwipe={(dir) => swiped(dir, character.name, index)}
+            onCardLeftScreen={() => outOfFrame(character.name, index)}
           >
-            <h3>{person.name}</h3>
-          </div> 
-        </TinderCards>
-      ))}
+            <div
+              style={{ backgroundImage: 'url(' + character.imgUrl + ')' }}
+              className='card'
+            >
+              <h3>{character.name}</h3>
+            </div>
+          </TinderCard>
+        ))}
+      </div>
+      <div className='swipeButtons'>
+        <IconButton style={{ backgroundColor: !canSwipe && '#ffffff' }} onClick={() => swipe('left')} className="swipeButtons_left">
+          <Close fontSize='large' />
+        </IconButton>
+        <IconButton style={{ backgroundColor: !canGoBack && '#ffffff' }} onClick={() => goBack()} className="swipeButtons_repeat">
+          <Replay fontSize='large' />
+        </IconButton>
+        <IconButton style={{ backgroundColor: !canSwipe && '#ffffff' }} onClick={() => swipe('right')} className="swipeButtons_right">
+          <Favorite fontSize='large' />
+        </IconButton>
       </div>
     </div>
   )
