@@ -1,13 +1,13 @@
 import React from 'react';
 import { render } from "@testing-library/react"
+import { shallow, mount } from "enzyme"
+// import { assert } from 'chai'
 
 import Chatbox from "../../../src/components/Message/Chatbox.jsx"
 
-jest.useFakeTimers()
-
 describe("Chatbox.jsx", () => {
   it("Render Chatbox.jsx", async () => {
-    const component = render(
+    const wrapper = shallow(
       <Chatbox
         a_messages={{
           text      : "Test",
@@ -16,6 +16,8 @@ describe("Chatbox.jsx", () => {
         }}
       />
     )
-    await expect(component).toMatchSnapshot();
+    await expect(wrapper).toMatchSnapshot();
+    const p_chatboxUser = wrapper.find('.chatbox_user')
+    await expect(p_chatboxUser.length).toBe(1)
   })
 })

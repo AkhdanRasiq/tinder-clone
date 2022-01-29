@@ -4,11 +4,11 @@ import { render } from "@testing-library/react"
 import Profile from "../../../src/components/Profile/Profile.jsx"
 
 describe("Profile.jsx", () => {
-  it("Render Profile.jsx", () => {
-    const component = render(
+  it("Render Profile.jsx", async () => {
+    const wrapper = render(
       <Profile />
     )
-    expect(component).toMatchSnapshot();
+    await expect(wrapper).toMatchSnapshot();
   })
 })
 
