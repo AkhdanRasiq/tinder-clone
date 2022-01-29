@@ -26,11 +26,11 @@ class Header extends React.Component {
     this.setState({ bPersonIsActive: event.detail.bPersonIsActive, bMessageIsActive: event.detail.bMessageIsActive })
   }
 
-  handlePersonSidebar = (event) => {
+  handlePersonSidebar = () => {
     this.setState({ bPersonIsActive: !this.state.bPersonIsActive })
   }
 
-  handleMessageSidebar = (event) => {
+  handleMessageSidebar = () => {
     this.setState({ bMessageIsActive: !this.state.bMessageIsActive })
   }
 

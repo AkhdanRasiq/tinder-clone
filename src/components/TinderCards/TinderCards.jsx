@@ -29,7 +29,7 @@ function TinderCardsView () {
     () =>
       Array(people.length)
         .fill(0)
-        .map((i) => React.createRef()),
+        .map(() => React.createRef()),
     [people]
   )
 

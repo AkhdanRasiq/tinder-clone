@@ -18,7 +18,7 @@ function Profile() {
       </div>
       <div className='sidebarProfilePersonalInfoContainer'>
         <EmailIcon fontSize='large' className='sidebarProfilePersonalInfoIcon' />
-        <p className='sidebarProfilePersonalInfoText'>indan.gumelar20@gmail.com</p>
+        <p className='sidebarProfilePersonalInfoText'>akhdan.rasiq@gmail.com</p>
       </div>
       <div className='sidebarProfilePersonalInfoContainer'>
         <GitHubIcon fontSize='large' className='sidebarProfilePersonalInfoIcon' />

@@ -1,0 +1,46 @@
+{
+  "compilerOptions": {
+    "target": "es2019",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "types": [
+      "jest",
+      "react",
+      "node"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "tests/**/*.js",
+    "tests/**/*.jsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

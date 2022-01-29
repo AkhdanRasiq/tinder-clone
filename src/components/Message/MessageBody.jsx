@@ -25,7 +25,7 @@ class MessageBody extends React.Component {
     goToBottom()
   }
 
-  handleResize = (event) => {
+  handleResize = () => {
     let vh = window.innerHeight * 0.01
     document.documentElement.style.setProperty('--vh', `${vh}px`)
     goToBottom()

@@ -29,11 +29,13 @@ This repository containing clone version of Tinder for Education purpose only!
 <br />
 <br />
 
-![JWT](https://abevoelker.com/assets/simple-transactional-email-links-using-json-web-tokens-jwt/jwt-wide-a712569b06ab520f7e87e85273120bb997461754a924ebb030c6902942fecd34.jpg)
+## Misc
 
-## Security
-
-1. JWT
+1. SASS
+2. Material-UI
+3. Websocket
+4. Jest
+5. Typescript
 
 <br />
 <br />
