@@ -33,7 +33,7 @@ class Sidebar extends React.Component {
       this.setState({ bMessageIsActive: this.props.a_bMessageIsActive })
   }
 
-  handleSidebarCoverHide = (event) => {
+  handleSidebarCoverHide = () => {
     this.setState({ bPersonIsActive: false, bMessageIsActive: false })
     const eventDispatch = new CustomEvent('sidebarCover', { detail: { bPersonIsActive: false, bMessageIsActive: false }});
     window.dispatchEvent(eventDispatch)

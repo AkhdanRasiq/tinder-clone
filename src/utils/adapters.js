@@ -19,7 +19,7 @@ export async function fetchData() {
 }
 
 export function connectWebsocket() {
-  wsSocket.onopen = function (event) {
+  wsSocket.onopen = function () {
     console.log('WebSocket Client Connected');
     heartbeat()
     eventDispatcher('authorOnline', { detail: { isOnline: true }})
