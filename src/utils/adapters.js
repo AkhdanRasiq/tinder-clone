@@ -3,8 +3,8 @@ import { strHost, saveToLocalStorage, loadFromLocalStorage, handleFilterMessage,
 
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
-let wsSocket    = new W3CWebSocket(strWebsocketHost())
-let wsHeartbeat  = {}
+let wsSocket
+let wsHeartbeat
 
 const axiosInstance = axios.create({
   baseURL: strHost()
@@ -19,6 +19,8 @@ export async function fetchData() {
 }
 
 export function connectWebsocket() {
+  wsSocket = new W3CWebSocket(strWebsocketHost())
+
   wsSocket.onopen = function () {
     console.log('WebSocket Client Connected');
     heartbeat()
@@ -57,7 +59,6 @@ export function onSendWebsocket(data) {
 
 export function wsRefreshConnection() {
   clearTimeout(wsHeartbeat)
-  wsSocket = new W3CWebSocket(strWebsocketHost())
   connectWebsocket()
 }
 

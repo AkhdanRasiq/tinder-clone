@@ -34,8 +34,9 @@ This repository containing clone version of Tinder for Education purpose only!
 1. SASS
 2. Material-UI
 3. Websocket
-4. Jest
+4. Jest & Enzyme
 5. Typescript
+6. Axios
 
 <br />
 <br />

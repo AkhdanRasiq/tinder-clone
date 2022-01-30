@@ -86,6 +86,9 @@ class Sidebar extends React.Component {
           style={(this.state.bPersonIsActive || this.state.bMessageIsActive) ? styleSidebarCoverShow : styleSidebarCoverHide}
           onClick={this.handleSidebarCoverHide}
         />
+
+        {/* PROFILE SIDEBAR */}
+
         <div className='sidebarCard' style={this.state.bPersonIsActive ? styleProfileSidebarShow : styleProfileSidebarHide}>
           <div className='sidebarProfileCloseContainer'>
             <IconButton onClick={this.handleSidebarCoverHide}>

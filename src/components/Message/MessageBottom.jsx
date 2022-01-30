@@ -1,7 +1,7 @@
 import React from 'react'
 
-import TextField from '@mui/material/TextField';
-import SendIcon from '@mui/icons-material/Send';
+import TextField from '@mui/material/TextField'
+import SendIcon from '@mui/icons-material/Send'
 import { IconButton } from "@mui/material"
 
 import { onSendWebsocket } from '../../utils/adapters'

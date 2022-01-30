@@ -35,7 +35,7 @@ class MessageBody extends React.Component {
     return (
       <div className='messageBodyContainer' id='messageBodyContainer'>
         {this.state.arrMessages.map((msg) => (
-          <Chatbox 
+          <Chatbox
             key={msg.timestamp}
             a_messages={msg}
           />
