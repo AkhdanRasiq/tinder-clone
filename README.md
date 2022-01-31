@@ -27,7 +27,6 @@ This repository containing clone version of Tinder for Education purpose only!
 2. Heroku   (BackEnd)
 
 <br />
-<br />
 
 ## Misc
 
@@ -52,20 +51,46 @@ BACKEND  : [Access Link](https://tinder-backend-clone-24.herokuapp.com/)
 1. AkhdanRasiq/tinder-clone (Frontend) : [Link](https://github.com/AkhdanRasiq/tinder-clone)
 2. AkhdanRasiq/tinder-clone-backend (Backend) : [Link](https://github.com/AkhdanRasiq/tinder-clone-backend)
 
-# Getting Started
+<br />
 
-## Install & Running
+# Command List
 
-Run this command to install all necessary  package listed in `package.json` :
+### Project setup
+```
+npm install
+```
 
-> npm install
+### Compiles and hot-reloads for development
+```
+npm start
+```
 
-Then Run this command to start the app :
+### Compiles and minifies for production
+```
+npm run build
+```
 
-> npm start
+### Run your unit tests
+```
+npm run test
+```
 
-## Deployment
+### Run your unit tests with hot-reloads
+```
+npm run test:watch
+```
 
-Run this below command to build the app :
+### Run your unit tests in band
+```
+npm run test:unit-band
+```
 
-> npm run build
+### Run your unit tests with more error detail
+```
+npm run test:detect-leak
+```
+
+### Lints and fixes files
+```
+npm run lint
+```
