@@ -193,27 +193,3 @@ export default {
   // Whether to use watchman for file crawling
   // watchman: true,
 };
-
-// module.exports = {
-//   moduleFileExtensions: [
-//     "ts",
-//     "tsx",
-//     "js",
-//     "jsx",
-//     "json"
-//   ],
-//   moduleNameMapper: {
-//     "^@/(.*)$": "<rootDir>/src/$1"
-//   },
-//   modulePaths: [
-//     "<rootDir>/src",
-//     "<rootDir>/node_modules"
-//   ],
-//   transform: {
-//     ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
-//     "^.+\\.(ts?|tsx?)$": "ts-jest"
-
-//   },
-//   setupFilesAfterEnv: ['<rootDir>/tests/setup.ts'],
-//   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts?|tsx?|js?|jsx?)$",
-// }

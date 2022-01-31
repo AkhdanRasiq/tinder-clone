@@ -43,7 +43,7 @@ class Header extends React.Component {
         />
 
         <div className="headerContainer">
-          <IconButton onClick={this.handlePersonSidebar}>
+          <IconButton id="btnPerson" onClick={this.handlePersonSidebar}>
             <Person fontSize="large" className="headerIcon" />
           </IconButton>
 
@@ -53,7 +53,7 @@ class Header extends React.Component {
             alt=""
           />
 
-          <IconButton onClick={this.handleMessageSidebar}>
+          <IconButton id="btnMessage" onClick={this.handleMessageSidebar}>
             <Forum fontSize="large" className="headerIcon" />
           </IconButton>
         </div>

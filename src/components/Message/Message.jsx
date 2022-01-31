@@ -32,7 +32,7 @@ class Message extends Component {
 
   render() {
     return (
-      <div>
+      <div className="messageContainer">
         <MessageHeader />
         <MessageBody
           a_arrMessages             = {this.state.arrMessages}

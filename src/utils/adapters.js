@@ -10,12 +10,11 @@ const axiosInstance = axios.create({
   baseURL: strHost()
 })
 
-export async function fetchData() {
-  const res = await axiosInstance.get("/tinder/cards")
-  if (!res)
-    return Promise.reject("Something went wrong!")
-  return Promise.resolve(res)
-
+export function fetchData() {
+  return axiosInstance
+  .get("/tinder/cards")
+  .then(res => Promise.resolve(res))
+  .catch(err => Promise.reject(err))
 }
 
 export function connectWebsocket() {
@@ -60,6 +59,10 @@ export function onSendWebsocket(data) {
 export function wsRefreshConnection() {
   clearTimeout(wsHeartbeat)
   connectWebsocket()
+}
+
+export function currentWebsocket() {
+  return wsSocket
 }
 
 function heartbeat() {

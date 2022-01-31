@@ -13,6 +13,11 @@ describe("MessageBody.jsx", () => {
   let wrapper
 
   beforeEach(() => {
+    const mockUpObject = {
+      focus: () => null,
+    };
+    global.document.getElementById = jest.fn(() => mockUpObject);
+    
     wrapper = shallow(
       <MessageBody
         a_arrMessages={[{
