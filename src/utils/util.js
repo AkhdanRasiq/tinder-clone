@@ -46,3 +46,7 @@ export function eventDispatcher(strEventName, data) {
   const eventDispatch = new CustomEvent(strEventName, data);
   window.dispatchEvent(eventDispatch)
 }
+
+export function timestampConverter(iTimestamp) {
+  return new Date(iTimestamp).toLocaleTimeString("en-US", { hour: 'numeric', minute: '2-digit', hour12: true })
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import Chatbox from './Chatbox'
 
 import { goToBottom } from '../../utils/util'
+import { currentWebsocket } from '../../utils/adapters'
 
 class MessageBody extends React.Component {
   constructor(props) {
@@ -12,17 +13,20 @@ class MessageBody extends React.Component {
   }
 
   componentDidMount = () => {
+    this.handleResize()
     window.addEventListener('resize', this.handleResize)
   }
 
   componentWillUnmount = () => {
-      window.removeEventListener('resize', this.handleResize)
+    window.removeEventListener('resize', this.handleResize)
   }
 
   componentDidUpdate = (prevProps) => {
-    if(this.props.a_arrMessages !== prevProps.a_arrMessages)
+    if(this.props.a_arrMessages !== prevProps.a_arrMessages) {
       this.setState({ arrMessages: this.props.a_arrMessages })
-    goToBottom()
+    }
+    if(currentWebsocket().readyState === WebSocket.OPEN)
+      goToBottom()
   }
 
   handleResize = () => {
@@ -35,7 +39,7 @@ class MessageBody extends React.Component {
     return (
       <div className='messageBodyContainer' id='messageBodyContainer'>
         {this.state.arrMessages.map((msg) => (
-          <Chatbox 
+          <Chatbox
             key={msg.timestamp}
             a_messages={msg}
           />

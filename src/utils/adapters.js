@@ -3,22 +3,23 @@ import { strHost, saveToLocalStorage, loadFromLocalStorage, handleFilterMessage,
 
 import { w3cwebsocket as W3CWebSocket } from "websocket";
 
-let wsSocket    = new W3CWebSocket(strWebsocketHost())
-let wsHeartbeat  = {}
+let wsSocket
+let wsHeartbeat
 
 const axiosInstance = axios.create({
   baseURL: strHost()
 })
 
-export async function fetchData() {
-  const res = await axiosInstance.get("/tinder/cards")
-  if (!res)
-    return Promise.reject("Something went wrong!")
-  return Promise.resolve(res)
-
+export function fetchData() {
+  return axiosInstance
+  .get("/tinder/cards")
+  .then(res => Promise.resolve(res))
+  .catch(err => Promise.reject(err))
 }
 
 export function connectWebsocket() {
+  wsSocket = new W3CWebSocket(strWebsocketHost())
+
   wsSocket.onopen = function () {
     console.log('WebSocket Client Connected');
     heartbeat()
@@ -57,8 +58,11 @@ export function onSendWebsocket(data) {
 
 export function wsRefreshConnection() {
   clearTimeout(wsHeartbeat)
-  wsSocket = new W3CWebSocket(strWebsocketHost())
   connectWebsocket()
+}
+
+export function currentWebsocket() {
+  return wsSocket
 }
 
 function heartbeat() {

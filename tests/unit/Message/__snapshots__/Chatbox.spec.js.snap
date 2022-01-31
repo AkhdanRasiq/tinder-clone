@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Chatbox.jsx Render Chatbox.jsx 1`] = `
+exports[`Chatbox.jsx renders properly when passed props 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>

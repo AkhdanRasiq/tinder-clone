@@ -32,15 +32,15 @@ class Message extends Component {
 
   render() {
     return (
-      <div>
+      <div className="messageContainer">
         <MessageHeader />
         <MessageBody
-          a_arrMessages             ={this.state.arrMessages}
+          a_arrMessages             = {this.state.arrMessages}
         />
 
         <MessageBottom
-          a_arrMessages             ={this.state.arrMessages}
-          a_messageOnUpdateCallback ={this.handleMessagesUpdate}
+          a_arrMessages             = {this.state.arrMessages}
+          a_messageOnUpdateCallback = {this.handleMessagesUpdate}
         />
       </div>
     )

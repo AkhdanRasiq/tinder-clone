@@ -86,6 +86,9 @@ class Sidebar extends React.Component {
           style={(this.state.bPersonIsActive || this.state.bMessageIsActive) ? styleSidebarCoverShow : styleSidebarCoverHide}
           onClick={this.handleSidebarCoverHide}
         />
+
+        {/* PROFILE */}
+
         <div className='sidebarCard' style={this.state.bPersonIsActive ? styleProfileSidebarShow : styleProfileSidebarHide}>
           <div className='sidebarProfileCloseContainer'>
             <IconButton onClick={this.handleSidebarCoverHide}>
@@ -96,7 +99,7 @@ class Sidebar extends React.Component {
         </div>
 
 
-        {/* MESSAGE SIDEBAR */}
+        {/* MESSAGE */}
 
         <div className='sidebarCard' style={this.state.bMessageIsActive ? styleMessageSidebarShow : styleMessageSidebarHide}>
           <div className='sidebarMessageCloseContainer'>

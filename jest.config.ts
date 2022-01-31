@@ -129,7 +129,7 @@ export default {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  // setupFilesAfterEnv: [],
+  setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -193,27 +193,3 @@ export default {
   // Whether to use watchman for file crawling
   // watchman: true,
 };
-
-// module.exports = {
-//   moduleFileExtensions: [
-//     "ts",
-//     "tsx",
-//     "js",
-//     "jsx",
-//     "json"
-//   ],
-//   moduleNameMapper: {
-//     "^@/(.*)$": "<rootDir>/src/$1"
-//   },
-//   modulePaths: [
-//     "<rootDir>/src",
-//     "<rootDir>/node_modules"
-//   ],
-//   transform: {
-//     ".+\\.(css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
-//     "^.+\\.(ts?|tsx?)$": "ts-jest"
-
-//   },
-//   setupFilesAfterEnv: ['<rootDir>/tests/setup.ts'],
-//   testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts?|tsx?|js?|jsx?)$",
-// }

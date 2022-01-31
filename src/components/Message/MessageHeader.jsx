@@ -76,6 +76,7 @@ class MessageHeader extends React.Component {
       <div className='messageHeaderContainer'>
         {this.state.isOnline ?
           <StyledBadgeOnline
+            id="userOnline"
             overlap="circular"
             anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
             variant="dot"
@@ -84,6 +85,7 @@ class MessageHeader extends React.Component {
           </StyledBadgeOnline>
         :
           <StyledBadgeOffline
+            id="userOffline"
             overlap="circular"
             anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
             variant="dot"
