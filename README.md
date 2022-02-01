@@ -36,6 +36,7 @@ This repository containing clone version of Tinder for Education purpose only!
 4. Jest & Enzyme
 5. Typescript
 6. Axios
+7. Eslint
 
 <br />
 <br />
